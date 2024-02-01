@@ -15,6 +15,8 @@ export class CitiesModule {}
 
 
 // next:
-//   - throw 404s for bad data, implement query params
+//   - done: finish CRUD
+//   - done: throw 404s for bad data
+//   - done: implement query params
 //   - alter response shape
 // then: on to Angular
