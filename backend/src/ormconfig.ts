@@ -7,8 +7,8 @@ const config: PostgresConnectionOptions = {
   username: 'rbc',
   password: '123',
   database: 'rbc',
+  synchronize: true,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  synchronize: false,
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
 };
 
