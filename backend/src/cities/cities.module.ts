@@ -14,5 +14,7 @@ import {CityEntity} from "@app/cities/entities/city.entity";
 export class CitiesModule {}
 
 
-// next: throw 404s for bad data, implement query params
-// then: switch to Angular
+// next:
+//   - throw 404s for bad data, implement query params
+//   - alter response shape
+// then: on to Angular
