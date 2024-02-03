@@ -4,7 +4,6 @@ import {UpdateContactDto} from './dto/update-contact.dto';
 import {DataSource, DeleteResult, Repository} from "typeorm";
 import {ContactEntity} from "@app/contacts/entities/contact.entity";
 import {InjectRepository} from "@nestjs/typeorm";
-import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
 
 @Injectable()
 export class ContactsService {
