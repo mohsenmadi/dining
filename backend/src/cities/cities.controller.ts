@@ -30,12 +30,12 @@ export class CitiesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCityDto: UpdateCityDto) {
+  async update(@Param('id') id: string, @Body() updateCityDto: UpdateCityDto) {
     return this.citiesService.update(+id, updateCityDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<DeleteResult> {
+  async remove(@Param('id') id: string): Promise<DeleteResult> {
     return this.citiesService.remove(+id);
   }
 
