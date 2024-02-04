@@ -9,12 +9,13 @@ import {
   MatTable
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatFabButton, MatIconButton} from "@angular/material/button";
 import {ContactsService} from "./contacts.service";
-import {ContactInterface} from "./contact.interface";
+import {ContactInterface, emptyContact} from "./contact.interface";
 import {catchError, concatMap, filter, of, tap} from "rxjs";
 import {openAddUpdateContactDialog} from "../contact-add-update/contact-add-update.component";
 import {MatDialog} from "@angular/material/dialog";
+import {MatTooltip} from "@angular/material/tooltip";
 
 const ELEMENT_DATA: ContactInterface[] = [
   {id: 1, name: 'sona madi', phone: '1113335555', email: 'sona@madi.com'},
@@ -35,7 +36,9 @@ const ELEMENT_DATA: ContactInterface[] = [
     MatHeaderRowDef,
     MatRowDef,
     MatIcon,
-    MatIconButton
+    MatIconButton,
+    MatFabButton,
+    MatTooltip
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
@@ -51,12 +54,13 @@ export class ContactsComponent implements OnInit {
     this.updateDataSource();
   }
 
-  updateContact(contact: ContactInterface) {
+  addUpdateContact(contact: ContactInterface = emptyContact) {
     openAddUpdateContactDialog(this.dialog, contact)
       .pipe(
         // filter(val => !!val),
         filter(val => this.isUpdated(val, contact)),
-        concatMap(contact => this.service.update(contact)),
+        concatMap(contact =>
+          contact.id ? this.service.update(contact) : this.service.add(contact)),
         tap(contact => this.updateDataSource())
       )
       .subscribe();

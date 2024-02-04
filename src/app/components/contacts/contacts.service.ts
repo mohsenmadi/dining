@@ -25,4 +25,8 @@ export class ContactsService {
   update(contact: ContactInterface) {
     return this.http.put(URL + `/${contact.id}`, contact);
   }
+
+  add(contact: ContactInterface) {
+    return this.http.post(URL, contact);
+  }
 }
