@@ -38,6 +38,7 @@ bootstrapApplication(AppComponent, appConfig)
        * could do some error handling, like, catchError in the pipe (gotta subscribe)
        * after deleting, update dataSource
  *
- *
+     * implement update()
+       * create contact-add-update component (this will host dialog)
  *
  */

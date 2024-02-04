@@ -12,7 +12,9 @@ import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
 import {ContactsService} from "./contacts.service";
 import {ContactInterface} from "./contact.interface";
-import {catchError, of} from "rxjs";
+import {catchError, concatMap, filter, of, tap} from "rxjs";
+import {openAddUpdateContactDialog} from "../contact-add-update/contact-add-update.component";
+import {MatDialog} from "@angular/material/dialog";
 
 const ELEMENT_DATA: ContactInterface[] = [
   {id: 1, name: 'sona madi', phone: '1113335555', email: 'sona@madi.com'},
@@ -42,7 +44,7 @@ export class ContactsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'phone', 'email', 'edit', 'delete'];
   dataSource!: any;
 
-  constructor(private service: ContactsService) {
+  constructor(private service: ContactsService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -50,7 +52,13 @@ export class ContactsComponent implements OnInit {
   }
 
   updateContact(contact: ContactInterface) {
-
+    openAddUpdateContactDialog(this.dialog, contact)
+      .pipe(
+        filter(val => !!val),
+        concatMap(contact => this.service.update(contact)),
+        tap(contact => this.updateDataSource())
+      )
+      .subscribe();
   }
 
   deleteContact(contact: ContactInterface) {

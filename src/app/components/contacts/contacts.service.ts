@@ -21,4 +21,8 @@ export class ContactsService {
     return this.http.delete(URL + `/${contact.id}`);
     // return this.http.delete(URL + `/33`);
   }
+
+  update(contact: ContactInterface) {
+    return this.http.put(URL + `/${contact.id}`, contact);
+  }
 }
