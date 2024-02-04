@@ -54,12 +54,16 @@ export class ContactsComponent implements OnInit {
   updateContact(contact: ContactInterface) {
     openAddUpdateContactDialog(this.dialog, contact)
       .pipe(
-        filter(val => !!val),
+        // filter(val => !!val),
+        filter(val => this.isUpdated(val, contact)),
         concatMap(contact => this.service.update(contact)),
         tap(contact => this.updateDataSource())
       )
       .subscribe();
   }
+
+  isUpdated = (contactUpdated: ContactInterface, contact: ContactInterface) =>
+    !!contactUpdated && JSON.stringify(contactUpdated) !== JSON.stringify(contact);
 
   deleteContact(contact: ContactInterface) {
     this.service.delete(contact)
@@ -73,6 +77,7 @@ export class ContactsComponent implements OnInit {
   }
 
   private updateDataSource() {
+    console.log('=========')
     this.dataSource = this.service.all();
   }
 }
