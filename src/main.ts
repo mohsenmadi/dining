@@ -40,5 +40,7 @@ bootstrapApplication(AppComponent, appConfig)
  *
      * implement update()
        * create contact-add-update component (this will host dialog)
+       *
+     * implement add()
  *
  */

@@ -81,7 +81,6 @@ export class ContactsComponent implements OnInit {
   }
 
   private updateDataSource() {
-    console.log('=========')
     this.dataSource = this.service.all();
   }
 }
