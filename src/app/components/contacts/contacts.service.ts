@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ContactInterface} from "./contact.interface";
-import {Observable} from "rxjs";
+import {ContactInterface, emptyContact} from "./contact.interface";
+import {Observable, of} from "rxjs";
 
 const URL = 'http://localhost:3000/contacts';
 
@@ -15,6 +15,12 @@ export class ContactsService {
 
   all(): Observable<ContactInterface[]> {
     return this.http.get<ContactInterface[]>(URL);
+  }
+
+  getOne(id: number): Observable<ContactInterface> {
+    return id < 0
+      ? of(emptyContact)
+      : this.http.get<ContactInterface>(URL + `/${id}`);
   }
 
   delete(contact: ContactInterface) {

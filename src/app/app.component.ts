@@ -14,7 +14,8 @@ import {ContactsComponent} from "./components/contacts/contacts.component";
     MatLabel,
     MatFormField,
     MatInput,
-    ContactsComponent
+    ContactsComponent,
+    RouterOutlet
   ],
   styleUrl: './app.component.scss'
 })

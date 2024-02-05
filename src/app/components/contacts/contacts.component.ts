@@ -16,6 +16,7 @@ import {catchError, concatMap, filter, of, tap} from "rxjs";
 import {openAddUpdateContactDialog} from "../contact-add-update/contact-add-update.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatTooltip} from "@angular/material/tooltip";
+import {RouterLink} from "@angular/router";
 
 const ELEMENT_DATA: ContactInterface[] = [
   {id: 1, name: 'sona madi', phone: '1113335555', email: 'sona@madi.com'},
@@ -38,7 +39,8 @@ const ELEMENT_DATA: ContactInterface[] = [
     MatIcon,
     MatIconButton,
     MatFabButton,
-    MatTooltip
+    MatTooltip,
+    RouterLink
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
