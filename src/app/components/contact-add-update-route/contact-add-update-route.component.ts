@@ -71,3 +71,5 @@ export class ContactAddUpdateRouteComponent {
       .subscribe();
   }
 }
+
+// https://angular.io/guide/http-test-requests
