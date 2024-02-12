@@ -8,13 +8,15 @@ import {
   MatCell,
   MatCellDef,
   MatColumnDef,
-  MatHeaderCell,
+  MatHeaderCell, MatHeaderCellDef,
   MatHeaderRow,
   MatHeaderRowDef,
   MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatFabButton, MatIconButton} from "@angular/material/button";
+import {MatTooltip} from "@angular/material/tooltip";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-tasks',
@@ -30,14 +32,18 @@ import {MatIconButton} from "@angular/material/button";
     MatIconButton,
     MatRow,
     MatRowDef,
-    MatTable
+    MatTable,
+    MatFabButton,
+    MatTooltip,
+    MatHeaderCellDef,
+    DatePipe
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'
 })
 export class TasksComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'phone', 'email', 'edit', 'delete'];
+  displayedColumns: string[] = ['title', 'completed', 'createdAt', 'updatedAt', 'edit', 'delete'];
   dataSource!: any;
 
   constructor(private service: TaskService, private dialog: MatDialog) {
@@ -47,7 +53,7 @@ export class TasksComponent implements OnInit {
     this.updateDataSource();
   }
 
-  openAddUpdateTaskDialog(task: TaskInterface = NEW_TASK) {
+  openAddUpdateTask(task: TaskInterface = NEW_TASK) {
     openAddUpdateTaskDialog(this.dialog, task)
       .pipe(
         filter(val => this.isUpdated(val, task)),

@@ -5,6 +5,7 @@ import {MatFormField, MatInput, MatInputModule, MatLabel} from "@angular/materia
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ContactsComponent} from "./components/contacts/contacts.component";
+import {TasksComponent} from "./components/tasks/tasks.component";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import {ContactsComponent} from "./components/contacts/contacts.component";
     MatFormField,
     MatInput,
     ContactsComponent,
-    RouterOutlet
+    RouterOutlet,
+    TasksComponent
   ],
   styleUrl: './app.component.scss'
 })
