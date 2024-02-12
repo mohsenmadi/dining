@@ -5,9 +5,10 @@ import ormconfig from "@app/ormconfig";
 import {AppService} from "@app/app.service";
 import { CitiesModule } from './cities/cities.module';
 import { ContactsModule } from './contacts/contacts.module';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ormconfig), CitiesModule, ContactsModule],
+  imports: [TypeOrmModule.forRoot(ormconfig), CitiesModule, ContactsModule, TasksModule],
   controllers: [AppController],
   providers: [AppService],
 })
