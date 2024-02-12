@@ -18,13 +18,13 @@ export class TasksService {
     return await this.taskRepository.save(task);
   }
 
-  async findAll(completed: string) {
+  async findAll(completed: boolean) {
     const queryBuilder =
       this.dataSource.getRepository(TaskEntity)
         .createQueryBuilder('tasks');
 
     if (completed) {
-      queryBuilder.where('completed LIKE :completed', {
+      queryBuilder.where('completed = :completed', {
         completed
       });
     }

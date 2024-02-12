@@ -14,7 +14,7 @@ export class TasksController {
   }
 
   @Get()
-  findAll(@Query('completed') completed: string) {
+  findAll(@Query('completed') completed: boolean) {
     return this.tasksService.findAll(completed);
   }
 

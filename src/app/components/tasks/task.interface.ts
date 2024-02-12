@@ -1,14 +1,14 @@
 export interface TaskInterface {
   id?: number;
   title: string;
-  completed: string;
+  completed: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
 
 export const NEW_TASK: TaskInterface = {
   title: '',
-  completed: '',
+  completed: false,
   createdAt: new Date(),
   updatedAt: new Date(),
 }

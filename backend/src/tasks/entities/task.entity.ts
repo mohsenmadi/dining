@@ -9,7 +9,7 @@ export class TaskEntity {
   title: string;
 
   @Column()
-  completed: string;
+  completed: boolean;
 
   @CreateDateColumn()
   createdAt: Date;

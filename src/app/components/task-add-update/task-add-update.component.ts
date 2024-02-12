@@ -11,6 +11,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {TaskInterface} from "../tasks/task.interface";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @Component({
   selector: 'app-task-add-update',
@@ -23,7 +24,8 @@ import {TaskInterface} from "../tasks/task.interface";
     MatDialogContent,
     MatDialogActions,
     MatButton,
-    MatLabel
+    MatLabel,
+    MatCheckbox
   ],
   templateUrl: './task-add-update.component.html',
   styleUrl: './task-add-update.component.scss'
