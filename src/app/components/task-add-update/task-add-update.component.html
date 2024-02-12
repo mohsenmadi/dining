@@ -1,0 +1,36 @@
+<div class="edit-task-form">
+
+  <h2 mat-dialog-title> {{ addOrEdit }} dialog </h2>
+
+  <mat-dialog-content [formGroup]="form">
+
+    <mat-form-field>
+      <mat-label>title</mat-label>
+      <input matInput placeholder="title" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>completed</mat-label>
+      <input matInput placeholder="completed" formControlName="completed">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>createdAt</mat-label>
+      <input matInput placeholder="createdAt" formControlName="createdAt">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>updatedAt</mat-label>
+      <input matInput placeholder="updatedAt" formControlName="updatedAt">
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+
+    <button mat-raised-button (click)="close()">close</button>
+    <button mat-raised-button color="primary" (click)="save()">save</button>
+
+  </mat-dialog-actions>
+
+</div>
