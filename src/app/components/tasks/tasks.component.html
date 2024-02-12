@@ -9,6 +9,11 @@
     </button>
 </div>
 
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 tasks-table">
     <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef> title</th>

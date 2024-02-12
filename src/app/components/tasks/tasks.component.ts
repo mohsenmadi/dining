@@ -18,6 +18,8 @@ import {MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatTooltip} from "@angular/material/tooltip";
 import {DatePipe} from "@angular/common";
 import {MatSort, MatSortModule} from "@angular/material/sort";
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput, MatLabel} from "@angular/material/input";
 
 @Component({
   selector: 'app-tasks',
@@ -39,7 +41,8 @@ import {MatSort, MatSortModule} from "@angular/material/sort";
     MatHeaderCellDef,
     DatePipe,
     MatSort,
-    MatTableModule, MatSortModule
+    MatLabel,
+    MatTableModule, MatSortModule, MatFormField, MatInput
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'
@@ -89,9 +92,12 @@ export class TasksComponent implements OnInit, AfterViewInit {
       .subscribe(() => this.updateDataSource());
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   private updateDataSource() {
-    // this.dataSource = this.service.all();
-    // this.dataSource.sort = this.service.all();
     this.service.all()
       .pipe(take(1))
       .subscribe(data =>
