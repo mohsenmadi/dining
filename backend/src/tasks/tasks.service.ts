@@ -56,7 +56,7 @@ export class TasksService {
     if (!task) {
       throw new HttpException(
         `*** no task with id ${id}`,
-        HttpStatus.BAD_REQUEST
+        HttpStatus.NOT_FOUND
       )
     }
 
