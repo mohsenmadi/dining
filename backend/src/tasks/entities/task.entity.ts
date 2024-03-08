@@ -1,4 +1,10 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn, TreeChildren,
+  UpdateDateColumn
+} from "typeorm";
 
 @Entity({name: 'tasks'})
 export class TaskEntity {
@@ -10,6 +16,12 @@ export class TaskEntity {
 
   @Column()
   completed: boolean;
+
+  @Column({nullable: true})
+  parentId: number;
+
+  @TreeChildren()
+  children: TaskEntity[]
 
   @CreateDateColumn()
   createdAt: Date;
