@@ -1,0 +1,8 @@
+<div *ngIf="task" class="tree-item">
+  {{ task?.title }}
+</div>
+<ul *ngFor="let child of task?.children">
+  <li>
+    <app-tree-item [task]="child"></app-tree-item>
+  </li>
+</ul>

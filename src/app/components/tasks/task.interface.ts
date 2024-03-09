@@ -4,6 +4,8 @@ export interface TaskInterface {
   completed: boolean;
   createdAt: Date;
   updatedAt: Date;
+  children?: TaskInterface[];
+  expanded: boolean;
 }
 
 export const NEW_TASK: TaskInterface = {
@@ -11,4 +13,5 @@ export const NEW_TASK: TaskInterface = {
   completed: false,
   createdAt: new Date(),
   updatedAt: new Date(),
+  expanded: false
 }

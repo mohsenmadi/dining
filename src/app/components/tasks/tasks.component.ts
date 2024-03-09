@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {TaskService} from "./task.service";
-import {catchError, concatMap, filter, of, take, tap} from "rxjs";
+import {catchError, concatMap, filter, map, of, take, tap} from "rxjs";
 import {NEW_TASK, TaskInterface} from "./task.interface";
 import {openAddUpdateTaskDialog} from "../task-add-update/task-add-update.component";
 import {
@@ -20,6 +20,7 @@ import {DatePipe} from "@angular/common";
 import {MatSort, MatSortModule} from "@angular/material/sort";
 import {MatFormField} from "@angular/material/form-field";
 import {MatInput, MatLabel} from "@angular/material/input";
+import {TreeItemComponent} from "../tree-item/tree-item.component";
 
 @Component({
   selector: 'app-tasks',
@@ -42,7 +43,7 @@ import {MatInput, MatLabel} from "@angular/material/input";
     DatePipe,
     MatSort,
     MatLabel,
-    MatTableModule, MatSortModule, MatFormField, MatInput
+    MatTableModule, MatSortModule, MatFormField, MatInput, TreeItemComponent
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'
@@ -99,10 +100,20 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   private updateDataSource() {
     this.service.all()
-      .pipe(take(1))
-      .subscribe(data =>
-        this.dataSource.data = data
+      .pipe(
+        take(1),
+        tap(data => data.map(item => item.expanded = false))
+      )
+      .subscribe(data => {
+          console.log(data);
+          this.dataSource.data = data
+        }
       )
   }
 
+  taskInFocus!:TaskInterface;
+
+  showDetail(task: TaskInterface) {
+    this.taskInFocus = task;
+  }
 }
