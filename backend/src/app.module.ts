@@ -6,9 +6,12 @@ import {AppService} from "@app/app.service";
 import { CitiesModule } from './cities/cities.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { TasksModule } from './tasks/tasks.module';
+import { DinersModule } from './diners/diners.module';
+import { RestaurantsModule } from './restaurants/restaurants.module';
+import { DinnerTablesModule } from './dinner-tables/dinner-tables.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ormconfig), CitiesModule, ContactsModule, TasksModule],
+  imports: [TypeOrmModule.forRoot(ormconfig), CitiesModule, ContactsModule, TasksModule, DinersModule, RestaurantsModule, DinnerTablesModule],
   controllers: [AppController],
   providers: [AppService],
 })
