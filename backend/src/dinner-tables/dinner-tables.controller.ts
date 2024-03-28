@@ -8,13 +8,13 @@ export class DinnerTablesController {
   constructor(private readonly dinnerTablesService: DinnerTablesService) {}
 
   @Post()
-  create(@Body() createDinnerTableDto: CreateDinnerTableDto) {
-    return this.dinnerTablesService.create(createDinnerTableDto);
+  async create(@Body() createDinnerTableDto: CreateDinnerTableDto) {
+    return await this.dinnerTablesService.create(createDinnerTableDto);
   }
 
   @Get()
-  findAll() {
-    return this.dinnerTablesService.findAll();
+  async findAll() {
+    return await this.dinnerTablesService.findAll();
   }
 
   @Get(':id')

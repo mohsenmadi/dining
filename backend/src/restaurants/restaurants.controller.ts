@@ -8,13 +8,13 @@ export class RestaurantsController {
   constructor(private readonly restaurantsService: RestaurantsService) {}
 
   @Post()
-  create(@Body() createRestaurantDto: CreateRestaurantDto) {
-    return this.restaurantsService.create(createRestaurantDto);
+  async create(@Body() createRestaurantDto: CreateRestaurantDto) {
+    return await this.restaurantsService.create(createRestaurantDto);
   }
 
   @Get()
-  findAll() {
-    return this.restaurantsService.findAll();
+  async findAll() {
+    return await this.restaurantsService.findAll();
   }
 
   @Get(':id')

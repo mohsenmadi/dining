@@ -9,9 +9,19 @@ import { TasksModule } from './tasks/tasks.module';
 import { DinersModule } from './diners/diners.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { DinnerTablesModule } from './dinner-tables/dinner-tables.module';
+import { ReservationsModule } from './reservations/reservations.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ormconfig), CitiesModule, ContactsModule, TasksModule, DinersModule, RestaurantsModule, DinnerTablesModule],
+  imports: [
+    TypeOrmModule.forRoot(ormconfig),
+    CitiesModule,
+    ContactsModule,
+    TasksModule,
+    DinersModule,
+    RestaurantsModule,
+    DinnerTablesModule,
+    ReservationsModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
